@@ -31,7 +31,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, [query]);
 
   console.log("weather", weather);
