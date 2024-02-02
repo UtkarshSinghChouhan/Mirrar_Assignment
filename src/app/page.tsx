@@ -26,7 +26,6 @@ export default function Home() {
       toast("⚠️ Invalid city name");
       setQuery("berlin");
     }
-
     setLoader(false);
   };
 
