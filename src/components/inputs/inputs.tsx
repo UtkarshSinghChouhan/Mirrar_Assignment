@@ -33,10 +33,10 @@ const Inputs = ({
         <button type="submit">
           <IoSearchOutline className="w-[25px] h-[25px] text-white cursor-pointer active:scale-90" />
         </button>
-        <IoLocationOutline className="w-[25px] h-[25px] text-white cursor-pointer transition hover:scale-105" />
+        <IoLocationOutline className="w-[25px] h-[25px] text-white cursor-pointer transition hover:scale-105 hidden lg:block" />
       </form>
 
-      <div className="flex flex-row w-1/4 items-center justify-center">
+      <div className="flex flex-row w-1/4 items-center justify-center ml-5 lg:ml-0">
         {TEMP.map((val: string, idx: number) => (
           <>
             <button
