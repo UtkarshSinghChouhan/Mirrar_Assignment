@@ -1,5 +1,3 @@
-import { getLocalDateTime } from "@/lib/weather-utils";
-
 const TimeLocation = ({
   weather: { datetime, city_name, country_code },
 }: {
