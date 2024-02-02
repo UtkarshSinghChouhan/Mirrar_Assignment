@@ -1,4 +1,4 @@
-import { getIcon, getLocalDateTime } from "@/lib/weather-utils";
+import { getIcon } from "@/lib/weather-utils";
 import Image from "next/image";
 import React from "react";
 
