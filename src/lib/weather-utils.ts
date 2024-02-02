@@ -1,6 +1,6 @@
 /**
  *
- * @param data
+ * @param obj
  * @returns
  */
 const formatCurrentWeather = (obj: any) => {
@@ -41,7 +41,6 @@ const formatCurrentWeather = (obj: any) => {
 const getWeatherData = async (searchParams: string) => {
   try {
     const res = await fetch(
-      // `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchParams}&key=${process.env.API_KEY}`
       `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchParams}&key=0efc9b93180741c281f8c53cd081c06c`
     );
     const data = await res.json();
@@ -66,50 +65,31 @@ const getFormattedWeatherData = async (searchParam: string) => {
 
 /**
  *
- * @param timestamp
- * @param timezoneOffset
- * @returns
- */
-export const getLocalDateTime = (timestamp: number, timezoneOffset: number) => {
-  // Convert timestamp to milliseconds
-  const milliseconds = timestamp * 1000;
-  // Create a new Date object
-  const dateObject = new Date(milliseconds);
-
-  // Apply timezone offset
-  const offsetMilliseconds = timezoneOffset * 1000;
-  const localTimeMilliseconds = dateObject.getTime() + offsetMilliseconds;
-  const localTime = new Date(localTimeMilliseconds);
-
-  // Get local date, day, and time components
-  const localDay = new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
-    localTime
-  );
-  const localDate = new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  }).format(localTime);
-  const localTimeStr = new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "numeric",
-    hour12: true,
-  }).format(localTime);
-
-  return {
-    localDay: localDay,
-    localDate: localDate,
-    localTime: localTimeStr,
-  };
-};
-
-/**
- *
  * @param iconCode
  * @returns
  */
 export const getIcon = (iconCode: string) => {
   return `/icons/${iconCode}.png`;
 };
+
+/**
+ *
+ * @param celsius
+ * @returns
+ */
+export function celsiusToFahrenheit(celsius: number) {
+  var fahrenheit = (celsius * 9) / 5 + 32;
+  return fahrenheit;
+}
+
+/**
+ *
+ * @param fahrenheit
+ * @returns
+ */
+export function fahrenheitToCelsius(fahrenheit: number) {
+  var celsius = ((fahrenheit - 32) * 5) / 9;
+  return celsius;
+}
 
 export default getFormattedWeatherData;

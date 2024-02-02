@@ -28,7 +28,7 @@ const TopButtons = ({
         {CITIES.slice(0, itemsToRender).map((data: ICities) => (
           <button
             key={data.id}
-            className="text-white text-lg font-medium capitalize active:scale-95 hover:text-slate-300"
+            className="text-white text-lg font-medium capitalize active:scale-95 hover:text-slate-800"
             onClick={() => setQuery(data.title)}
           >
             {data.title}

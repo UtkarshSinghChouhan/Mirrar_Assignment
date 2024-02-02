@@ -7,6 +7,8 @@ const Inputs = ({
   setQuery: Dispatch<SetStateAction<string>>;
 }) => {
   const [inputState, setInputState] = useState<string>("");
+  const [activeTemp, setActiveTemp] = useState<number>(0);
+  const TEMP = ["C", "F"];
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,19 +37,20 @@ const Inputs = ({
       </form>
 
       <div className="flex flex-row w-1/4 items-center justify-center">
-        <button
-          name="metric"
-          className="active:scale-90 transition hover:text-slate-400 text-xl text-white font-light"
-        >
-          &deg;C
-        </button>
-        <p className="text-xl text-white mx-1">|</p>
-        <button
-          name="imperial"
-          className="active:scale-90 transition hover:text-slate-400 text-xl text-white font-light"
-        >
-          &deg;F
-        </button>
+        {TEMP.map((val: string, idx: number) => (
+          <>
+            <button
+              key={idx}
+              className={`active:scale-90 transition hover:text-slate-800 w-10 h-10 text-xl text-white font-light ${
+                idx === activeTemp && "border"
+              }`}
+              onClick={() => setActiveTemp(idx)}
+            >
+              &deg;{val}
+            </button>
+            {idx < 1 && <p className="text-xl text-white mx-1">|</p>}
+          </>
+        ))}
       </div>
     </article>
   );
