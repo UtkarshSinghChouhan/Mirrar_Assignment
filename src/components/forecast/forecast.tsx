@@ -17,7 +17,7 @@ const Forecast = ({ title, weather }: { title: string; weather: any }) => {
           const { icon, description } = weather;
           return (
             <React.Fragment key={idx}>
-              <div className="flex flex-col w-full items-center justify-around border border-slate-300 p-5 rounded-2xl hover:shadow-lg shadow-md cursor-pointer">
+              <div className="flex flex-col w-full min-w-[150px] items-center justify-around border border-slate-300 p-5 rounded-2xl hover:shadow-lg shadow-md cursor-pointer">
                 <p className="font-light text-sm whitespace-nowrap">
                   {datetime}
                 </p>
