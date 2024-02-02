@@ -11,13 +11,13 @@ const Forecast = ({ title, weather }: { title: string; weather: any }) => {
       </div>
       <hr className="my-2" />
 
-      <div className="flex flex-row items-center justify-between gap-6 text-white mt-6 mb-10">
+      <div className="flex flex-col  lg:flex-row items-center justify-between gap-6 text-white mt-6 mb-10">
         {data.slice(1, 6).map((obj: any, idx: number) => {
           const { datetime, weather, temp } = obj;
           const { icon, description } = weather;
           return (
             <React.Fragment key={idx}>
-              <div className="flex flex-col items-center justify-around border border-slate-300 p-5 rounded-2xl hover:shadow-lg shadow-md">
+              <div className="flex flex-col w-full items-center justify-around border border-slate-300 p-5 rounded-2xl hover:shadow-lg shadow-md cursor-pointer">
                 <p className="font-light text-sm whitespace-nowrap">
                   {datetime}
                 </p>

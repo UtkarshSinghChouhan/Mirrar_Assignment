@@ -31,14 +31,14 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, [query]);
 
   console.log("weather", weather);
 
   return (
     <>
-      <section className="mx-auto my-4 py-5 px-32 max-w-screen-xl w-fit h-fit shadow-xl shadow-gray-400 bg-gradient-to-br  from-violet-300 to-pink-300 flex flex-col justify-center text-slate-700">
+      <section className="mx-auto my-4 py-5 px-10 lg:px-32 w-[90%] rounded-xl lg:rounded-none  lg:max-w-screen-xl lg:w-fit h-fit shadow-xl shadow-gray-400 bg-gradient-to-br  from-violet-300 to-pink-300 flex flex-col justify-center text-slate-700">
         <TopButtons setQuery={setQuery} />
         <Inputs setQuery={setQuery} />
 
