@@ -1,27 +1,11 @@
-import { IoMdSunny } from "react-icons/io";
 import { IoWaterOutline } from "react-icons/io5";
-import {
-  FaTemperatureThreeQuarters,
-  FaWind,
-  FaArrowUp,
-  FaArrowDown,
-} from "react-icons/fa6";
-import { WiSunset } from "react-icons/wi";
+import { FaDirections } from "react-icons/fa";
+import { FaWind, FaArrowUp, FaArrowDown } from "react-icons/fa6";
 import Image from "next/image";
-import { getIcon, getLocalDateTime } from "@/lib/weather-utils";
+import { getIcon } from "@/lib/weather-utils";
 
 const TempDetail = ({
-  weather: {
-    description,
-    icon,
-    sunrise,
-    sunset,
-    wind_spd,
-    // humidity,
-    // feels_like,
-    max_temp,
-    min_temp,
-  },
+  weather: { description, icon, wind_spd, wind_dir, rh, max_temp, min_temp },
 }: {
   weather: any;
 }) => {
@@ -31,42 +15,46 @@ const TempDetail = ({
         <p>{description}</p>
       </div>
 
-      <div className="flex flex-row items-center justify-between text-white py-3">
+      <div className="flex flex-row items-center justify-between text-white border border-slate-300 p-5 rounded-2xl hover:shadow-lg shadow-md">
         <Image src={getIcon(icon)} alt="icon" width={80} height={80} />
-        <p className="text-5xl">34&deg;</p>
-        <div className="flex flex-col space-y-2">
-          {/* <div className="flex font-light text-sm items-center justify-center">
-            <FaTemperatureThreeQuarters className="mr-1 w-4 h-4" />
-            <span className="font-medium ml-1">
-              Real feel: {feels_like}&deg;
-            </span>
+        <div className=" flex flex-col items-center">
+          <p className="text-5xl">34&deg;</p>
+          <div className="flex flex-row items-center justify-center space-x-2 text-white text-sm pt-3">
+            <FaArrowUp className="text-white w-6 h-6" />
+            <p className="font-light whitespace-nowrap">
+              Max:{" "}
+              <span className="font-medium ml-1 whitespace-nowrap">
+                {max_temp}&deg;
+              </span>
+            </p>
+            <p className="font-light whitespace-nowrap">|</p>
+
+            <FaArrowDown className="text-white w-6 h-6" />
+            <p className="font-light whitespace-nowrap">
+              Min:{" "}
+              <span className="font-medium ml-1 whitespace-nowrap">
+                {min_temp}&deg;
+              </span>
+            </p>
           </div>
-          <div className="flex font-light text-sm items-center justify-center">
-            <IoWaterOutline className="mr-1 w-4 h-4" />
-            <span className="font-medium ml-1">Humidity: {humidity}%</span>
-          </div> */}
-          <div className="flex font-light text-sm items-center justify-center">
+        </div>
+        <div className="flex flex-col space-y-2">
+          <div className="flex font-light text-sm items-center justify-start">
             <FaWind className="mr-1 w-4 h-4" />
-            <span className="font-medium ml-1">Wind: {wind_spd} km/h</span>
+            <span className="font-medium ml-1">Wind: {wind_spd} kmph</span>
+          </div>
+          <div className="flex font-light text-sm items-center justify-start">
+            <FaDirections className="mr-1 w-4 h-4" />
+            <span className="font-medium ml-1">Wind: {wind_dir}&deg;</span>
+          </div>
+          <div className="flex font-light text-sm items-center justify-start">
+            <IoWaterOutline className="mr-1 w-4 h-4" />
+            <span className="font-medium ml-1">Humidity: {rh}%</span>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-center space-x-2 text-white text-sm py-3">
-        <IoMdSunny className="text-white w-8 h-8" />
-        <p className="font-light whitespace-nowrap">
-          Rise:{" "}
-          <span className="font-medium ml-1 whitespace-nowrap">{sunrise}</span>
-        </p>
-        <p className="font-light whitespace-nowrap">|</p>
-
-        <WiSunset className="text-white w-10 h-10" />
-        <p className="font-light whitespace-nowrap">
-          Set:{" "}
-          <span className="font-medium ml-1 whitespace-nowrap">{sunset}</span>
-        </p>
-        <p className="font-light whitespace-nowrap">|</p>
-
+      {/* <div className="flex flex-row items-center justify-center space-x-2 text-white text-sm py-3">
         <FaArrowUp className="text-white w-6 h-6" />
         <p className="font-light whitespace-nowrap">
           Max:{" "}
@@ -83,7 +71,7 @@ const TempDetail = ({
             {min_temp}&deg;
           </span>
         </p>
-      </div>
+      </div> */}
     </>
   );
 };

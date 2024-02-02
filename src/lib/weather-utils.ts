@@ -1,34 +1,20 @@
-// const BASE_URL =
-//   "https://api.weatherbit.io/v2.0/forecast/daily?city=Berlin&key=0efc9b93180741c281f8c53cd081c06c";
-
-//   https: const options = {
-//     method: "GET",
-//     headers: {
-//       "X-RapidAPI-Key": "d1b873e201msh43e5eeb485a3105p12a64fjsnecdb7ed5b63f",
-//       "X-RapidAPI-Host": "open-weather13.p.rapidapi.com",
-//     },
-//   };
-
-//api.weatherbit.io/v2.0/forecast/daily?city=Berlin&key=0efc9b93180741c281f8c53cd081c06c
 /**
  *
  * @param data
  * @returns
  */
 const formatCurrentWeather = (obj: any) => {
-  // const {
-  //   coord: { lat, lon },
-  //   main: { temp, feels_like, temp_min, temp_max, humidity },
-  //   wind: { deg, speed },✅
-  //   name,✅
-  //   dt,
-  //   sys: { country, sunrise, sunset },
-  //   weather,
-  //   timezone,
-  // } = data;
   const { city_name, country_code, data } = obj;
-  const { datetime, weather, max_temp, min_temp, temp, wind_dir, wind_spd } =
-    data[0];
+  const {
+    datetime,
+    weather,
+    max_temp,
+    min_temp,
+    temp,
+    rh,
+    wind_dir,
+    wind_spd,
+  } = data[0];
   const { icon, description } = weather;
 
   return {
@@ -43,6 +29,7 @@ const formatCurrentWeather = (obj: any) => {
     icon,
     description,
     data,
+    rh,
   };
 };
 
